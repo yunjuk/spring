@@ -7,11 +7,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class QuizDAO {
 
-	
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
 	public QuizDO submitAnswer(QuizDO quizDO) {
-		return sqlSession.selectOne("quizMapper.submitAnswer",quizDO);
+		return sqlSession.selectOne("quizMapper.submitAnswer", quizDO);
 	}
 }

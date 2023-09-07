@@ -5,15 +5,13 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class QuizServiceImpl implements QuizService {
-
+	
 	@Autowired
-	private QuizDAO quizDao;
+	private QuizDAO quizDAO;
 	
 	@Override
-	public abstract QuizDO submitAnswer(QuizDO quizDO);
-	 return quizDao.submitAnswer(quizDao)
-
-
-	
+	public QuizDO submitAnswer(QuizDO quizDO) {
+		return quizDAO.submitAnswer(quizDO);
+	}
 	
 }

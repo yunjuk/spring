@@ -1,11 +1,9 @@
 package com.kh.quiz;
 
 public class QuizDO {
-
-	
-	//여긴 이제 데이터 저장하는 용도임.
 	private String question;
 	private String answerOne;
+	
 	public String getQuestion() {
 		return question;
 	}

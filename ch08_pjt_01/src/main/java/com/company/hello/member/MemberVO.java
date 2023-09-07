@@ -2,10 +2,13 @@ package com.company.hello.member;
 
 public class MemberVO {
 
-	String m_id;
-	int m_pw;
-	String m_mail;
-	String m_phone;
+	private String m_id;
+	private int m_pw;
+	private String m_mail;
+	private String m_phone;
+	
+	
+	
 	public String getM_id() {
 		return m_id;
 	}

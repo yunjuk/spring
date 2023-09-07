@@ -21,9 +21,8 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.company.hello" />
+	<context:component-scan base-package="com.kh.quiz" />
 	
-	<!-- MemberService Bean 생성 -->
-	<beans:bean id="memberService" class="com.company.hello.member.MemberService"/>
+	
 	
 </beans:beans>

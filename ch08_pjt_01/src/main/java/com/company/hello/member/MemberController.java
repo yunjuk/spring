@@ -1,5 +1,6 @@
 package com.company.hello.member;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -7,6 +8,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class MemberController {
 	
+	
+
+	
+	
+	
+	@Autowired
+	MemberService memberService;
 	
 	@RequestMapping("/signUp") //url경로 연결
 	public String signUp() {
@@ -24,36 +32,39 @@ public class MemberController {
 	//리퀘스트 파람 애너테이션으로 받을 수 있다. 
 	
 	@RequestMapping("/signUpConfirm") 
-	public String signUpConfirm(@RequestParam String m_id,
-								@RequestParam int m_pw,
-								@RequestParam String m_mail,
-								@RequestParam String m_phone) {
+	public String signUpConfirm(MemberVO memberVO) {
 		System.out.println("[MemberController] signUpConfirm()");
 		
-		System.out.println("m_id:" + m_id);
-		System.out.println("m_pw:" + m_pw);
-		System.out.println("m_pw_type:" + ((Object)m_pw).getClass().getName());
-		System.out.println("m_mail:" + m_mail);
-		System.out.println("m_phone:" + m_phone);
+		System.out.println("m_id:" + memberVO.getM_id());
+		System.out.println("m_pw:" + memberVO.getM_pw());
+//		System.out.println("m_pw_type:" + ((Object)getM_pw).getClass().getName());
+		System.out.println("m_mail:" + memberVO.getM_mail());
+		System.out.println("m_phone:" + memberVO.getM_phone());
 		
-		return null;
+		memberService.signUpConfirm(memberVO);
+		return "sign_up_ok";
 		
-		
-		
-		
-		
-		
-		
-		
-		
+	}
+	//사인 인풋 코드 
+	@RequestMapping("/signInConfirm")
+	public String signInConfirm(MemberVO memberVO) {
+		System.out.println("[MemberController] signConfirm()");
 		
 		
+		//서비스 호출
+		MemberVO signInedMember = memberService.signInConfirm(memberVO);
+		
+		if (signInedMember != null) // 로그인 성공
+			return "sign_up_ok"; //나는 이부분 in으로 안하고 up으로 함 
+		else     //로그인 실패
+			return "sign_in_ng";
 		
 		
+		// return null; 이 부분은 필요없어져서 주석처리 
 		
-		
-		
+	}
+			
 		
 	}
 	
-}
+

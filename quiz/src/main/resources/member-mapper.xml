@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mpper namespace="quizMapper">
+	<resultMap type="QuizDO" id="quizDOResultSet">
+	//질문에 대한 답 칸
+		<id property ="question" column= "QUESTION" />
+		<result property ="answerOne" column ="ANSWER" />
+	</resultMap>
+	
+	<select id="submitAnswer" parameter Type="QuizDO" resultMap="quizDOResultSet">
+		SELECT *FROM QuizDO WHERE QUESTION=#{question} AND 
+		ANSWERONE=#{answer} 
+	</select>
+</mpper>

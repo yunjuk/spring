@@ -2,7 +2,7 @@ package com.kh.quiz;
 
 public class QuizDO {
 	private String question;
-	private String answerOne;
+	private String answer;
 	
 	public String getQuestion() {
 		return question;
@@ -10,11 +10,11 @@ public class QuizDO {
 	public void setQuestion(String question) {
 		this.question = question;
 	}
-	public String getAnswerOne() {
-		return answerOne;
+	public String getAnswer() {
+		return answer;
 	}
-	public void setAnswerOne(String answerOne) {
-		this.answerOne = answerOne;
+	public void setAnswer(String answer) {
+		this.answer = answer;
 	}
 	
 	

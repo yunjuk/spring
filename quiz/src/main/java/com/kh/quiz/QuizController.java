@@ -10,16 +10,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class QuizController {
-	@Autowired
+	@Autowired // 우리가 직접 생산하는 게 아니라 스프링한테 맡김. 
 	private QuizService quizService;
 	
+	@RequestMapping("/")
+	public String toMainPage() {
+		return "index";
+	}
+	
+	
 	@RequestMapping("quizSubmitted")
-	public String answerSubmit(QuizDO answerdQuestion, Model model, HttpServletRequest request) {
-		QuizDO quizDO = quizService.submitAnswer(answerdQuestion);
+	public String answerSubmit(QuizDO answer, Model model,
+			HttpServletRequest request) {
+		QuizDO quizDO = quizService.submitAnswer(answer);
 		HttpSession session = request.getSession();
 		if(quizDO == null) {
+			model.addAttribute("msg","Wrong answer");
 			return "error";
 		}else {
+			session.setAttribute("answer", quizDO);
 			return "index";
 		}
 	}

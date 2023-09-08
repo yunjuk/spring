@@ -9,8 +9,9 @@
 </head>
 <body>
 	<c:if test="${empty answer}">
-		<form action="quizSubmitted" method="post">
-		<label> 1 + 1 = </label> <input type="text" name="answerOne">
+		<form action="/quizSubmitted" method="post">
+		<label>1. 1 + 1 = </label> <input type="hidden" name="question" value="1">
+		<input type="text" name="answer" />
 		<button>제출</button>
 		</form>
 	</c:if>

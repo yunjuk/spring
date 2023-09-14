@@ -12,6 +12,7 @@ public class AdminMemberService {
 	
 	@Autowired
 	AdminMemberDAO adminMemberDAO;
+	
 	public int createAccountConfirm(AdminMemberVO adminMemberVO) {
 		System.out.println("[AdminMemberService]createAccountConfirm()");
 		
@@ -35,9 +36,32 @@ public class AdminMemberService {
 				
 			}
 			
-		
-		
+
+	}
 	
+	public AdminMemberVO loginConfirm(AdminMemberVO adminMemberVO) {
+		System.out.println("[AdminMemberService] loginConfirm()");
+		
+		AdminMemberVO loginedAdminMemberVO = 
+				adminMemberDAO.selectAdmin(adminMemberVO);
+		
+		
+		if(loginedAdminMemberVO != null) {
+			System.out.println("[AdminMemberService] ADMIN MEMBER LOGIN SUCCESS");
+			
+		}else {
+			System.out.println("[AdminMemberService] ADMIN MEMBER LOGIN FAIL!");
+		}
+		return loginedAdminMemberVO;
+		
+		
 		
 	}
+	
+	
+	
+	
+	
+	
+	
 }

@@ -1,13 +1,18 @@
 package com.office.library.admin.member;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/admin/member")
@@ -82,5 +87,39 @@ public class AdminMemberController {
 		
 		return nextPage;
 	}
+	
+	
+	@GetMapping("/listupAdmin")
+	public ModelAndView listupAdmin(Model model) {
+		System.out.println("[AdminMemberController] modifyAccountConfirm()");
+		
+		String nextPage = "admin/member/listup_admins";
+		
+		List<AdminMemberVO> adminMemberVOs = adminMemberService.listupAdmin();
+		
+		
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("adminMemberVOs", adminMemberVOs);
+		modelAndView.setViewName(nextPage);
+		
+//		model.addAttribute("adminMemberVOs", adminMemberVOs);
+		
+		return modelAndView;
+		
+	}
+	
+	@GetMapping("/setAdminApproval")
+	public String setAdminApproval(@RequestParam("a_m_no") int a_m_no) {
+		System.out.println("[AdminMemberController]setAdminApproval()");
+		
+		String nextPage = "redirect:/admin/member/listupAdmin";
+	
+		adminMemberService.setAdminApproval(a_m_no);
+		return nextPage;
+	}
+	
+	
+	
+	
 	
 }

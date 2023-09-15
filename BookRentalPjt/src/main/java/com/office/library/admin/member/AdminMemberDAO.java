@@ -152,7 +152,63 @@ public class AdminMemberDAO {
 
 		
 	}
-	
-
+	public List<AdminMemberVO> selectAdmins(){
+		System.out.println("[AdminMemberDAO] selectAdmins()");
+		
+		
+		String sql = "SELECT * FROM tbl_admin_member";
+		
+		
+		List<AdminMemberVO> adminMemberVOs = new ArrayList<AdminMemberVO>();
+		
+		
+		try {
+			adminMemberVOs = jdbcTemplate.query(sql, new RowMapper<AdminMemberVO>() {
+				
+					@Override
+						public AdminMemberVO mapRow(ResultSet rs, int rowNum) 
+						throws SQLException{
+						AdminMemberVO adminMemberVO = new AdminMemberVO();
+						
+						adminMemberVO.setA_m_no(rs.getInt("a_m_no"));
+						adminMemberVO.setA_m_approval(rs.getInt("a_m_approval"));
+						adminMemberVO.setA_m_id(rs.getString("a_m_id"));
+						adminMemberVO.setA_m_pw(rs.getString("a_m_pw"));
+						adminMemberVO.setA_m_name(rs.getString("a_m_name"));
+						adminMemberVO.setA_m_gender(rs.getString("a_m_gender"));
+						adminMemberVO.setA_m_part(rs.getString("a_m_part"));
+						adminMemberVO.setA_m_position(rs.getString("a_m_position"));
+						adminMemberVO.setA_m_mail(rs.getString("a_m_mail"));
+						adminMemberVO.setA_m_phone(rs.getString("a_m_phone"));
+						adminMemberVO.setA_m_reg_date(rs.getString("a_m_reg_date"));
+						adminMemberVO.setA_m_mod_date(rs.getString("a_m_mod_date"));
+						
+						return adminMemberVO;
+					}
+			  });
+				
+			}catch (Exception e) {
+				e.printStackTrace();
+		}
+		return adminMemberVOs;
+		
+		
+	}
+	public int updateAdminAccount(int a_m_no) {
+		System.out.println("[AdminMemberDAO] updateadminAccount()");
+		String sql = "UPDATE tbl_admin_member SET "
+				+ "a_m_approval = 1 "
+				+ "WHERE a_m_no = ? ";
+		
+		int result = -1;
+		
+		try {
+			result = jdbcTemplate.update(sql, a_m_no);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+		
+	}
 	
 }

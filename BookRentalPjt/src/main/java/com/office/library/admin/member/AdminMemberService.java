@@ -1,7 +1,10 @@
 package com.office.library.admin.member;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Service
 public class AdminMemberService {
@@ -59,9 +62,17 @@ public class AdminMemberService {
 	}
 	
 	
+	public List<AdminMemberVO> listupAdmin()
+	{
+		System.out.println("[AdminMemberService] listupAdmin()");
+		return adminMemberDAO.selectAdmins();
+	}
 	
-	
-	
+	public void setAdminApproval( int a_m_no) {
+		System.out.println("[AdminMemberService] setAdminApproval()");
+		
+		int result = adminMemberDAO.updateAdminAccount(a_m_no);
+	}
 	
 	
 }

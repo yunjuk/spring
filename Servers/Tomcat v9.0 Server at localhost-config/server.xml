@@ -104,7 +104,7 @@
 
 				
 				
-			<Context docBase="ch10_pjt_01" path="/cookie" reloadable="true" source="org.eclipse.jst.jee.server:ch10_pjt_01"/><Context docBase="BookRentalPjt" path="/library" reloadable="true" source="org.eclipse.jst.jee.server:BookRentalPjt"/></Host>
+			<Context docBase="quiz" path="/" reloadable="true" source="org.eclipse.jst.jee.server:quiz"/><Context docBase="BookRentalPjt" path="/library" reloadable="true" source="org.eclipse.jst.jee.server:BookRentalPjt"/></Host>
 		</Engine>
 	</Service>
 </Server>

@@ -9,7 +9,7 @@
 		let form = document.create_account_form;
 		
 		if (form.a_m_id.value == '') {
-			alert('INPUT ADMIN ID.');
+			alert('INPUT ADMIN ID.'); 
 			form.a_m_id.focus();
 			
 		} else if (form.a_m_pw.value == '') {
